@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import Projectitem from './Project/Projectitem';
+import "bootstrap/dist/css/bootstrap.min.css";
 
 class Dashboard extends Component {
   render() {
     return (
-      <div className="">
-        <h1>Welcome to the Dashboard</h1>
+      <div>
+        <h1 className="alert alert-warning">Welcome to the Dashboard</h1>
         <Projectitem/>
       </div>
     );
