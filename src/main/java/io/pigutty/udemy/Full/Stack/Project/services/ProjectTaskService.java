@@ -18,20 +18,23 @@ public class ProjectTaskService {
 
     public ProjectTask addProjectTask(String projectIdentifier, ProjectTask projectTask){
         Backlog backlog = backlogRepository.findByProjectIdentifier(projectIdentifier);
+        projectTask.setBacklog(backlog);
 
         Integer BacklogSequence = backlog.getPTSequence();
 
         BacklogSequence++;
 
+        backlog.setPTSequence(BacklogSequence);
+
         projectTask.setProjectSequence(projectIdentifier+"-"+ BacklogSequence);
         projectTask.setProjectIdentifier(projectIdentifier);
 
-//        if(projectTask.getPriority()==0||projectTask.getPriority()==null){
-//            projectTask.setPriority(3);
-//        }
-//        if(projectTask.getStatus().equals("") ||projectTask.getStatus()==null){
-//            projectTask.setStatus("TO_DO");
-//        }
+        if(projectTask.getPriority()==null){
+            projectTask.setPriority(3);
+        }
+        if(projectTask.getStatus()==null){
+            projectTask.setStatus("TO_DO");
+        }
         return projectTaskRepository.save(projectTask);
 
     }
