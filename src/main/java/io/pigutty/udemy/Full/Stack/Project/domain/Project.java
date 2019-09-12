@@ -104,7 +104,7 @@ public class Project {
     }
 
     @PreUpdate
-    protected void inUpdate(){
+    protected void onUpdate(){
         this.updated_At = new Date();
     }
 
