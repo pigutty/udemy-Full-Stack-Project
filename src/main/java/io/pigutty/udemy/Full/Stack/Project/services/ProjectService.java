@@ -29,7 +29,7 @@ public class ProjectService {
             }
 
             if(project.getId()!=null){
-                project.getBacklog(backlogRepository.findByProjectIdentifier(project.getProjectIdentifier().toUpperCase());
+                project.setBacklog(backlogRepository.findByProjectIdentifier(project.getProjectIdentifier().toUpperCase()));
             }
 
             return projectRepository.save(project);
