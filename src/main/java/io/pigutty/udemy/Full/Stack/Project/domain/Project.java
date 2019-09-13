@@ -27,9 +27,9 @@ public class Project {
     @JsonFormat(pattern = "yyyy-mm-dd")
     private Date end_date;
     @JsonFormat(pattern = "yyyy-mm-dd")
-    private Date created_At;
+    private Date create_At;
     @JsonFormat(pattern = "yyyy-mm-dd")
-    private Date updated_At;
+    private Date update_At;
 
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL,mappedBy = "project")
     @JsonIgnore
@@ -87,20 +87,20 @@ public class Project {
         this.end_date = end_date;
     }
 
-    public Date getCreated_At() {
-        return created_At;
+    public Date getCreate_At() {
+        return create_At;
     }
 
-    public void setCreated_At(Date created_At) {
-        this.created_At = created_At;
+    public void setCreate_At(Date created_At) {
+        this.create_At = create_At;
     }
 
-    public Date getUpdated_At() {
-        return updated_At;
+    public Date getUpdate_At() {
+        return update_At;
     }
 
-    public void setUpdated_At(Date updated_At) {
-        this.updated_At = updated_At;
+    public void setUpdate_At(Date update_At) {
+        this.update_At = update_At;
     }
 
     public Backlog getBacklog() {
@@ -113,12 +113,12 @@ public class Project {
 
     @PrePersist
     protected void onCreate(){
-        this.created_At = new Date();
+        this.create_At = new Date();
     }
 
     @PreUpdate
     protected void onUpdate(){
-        this.updated_At = new Date();
+        this.update_At = new Date();
     }
 
 }
