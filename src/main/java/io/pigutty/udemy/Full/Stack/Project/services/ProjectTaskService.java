@@ -63,4 +63,10 @@ public class ProjectTaskService {
         return projectTaskRepository.findByProjectIdentifierOrderByPriority(id);
     }
 
+
+    public ProjectTask findPTByProjectSequence(String sequence){
+
+        return projectTaskRepository.findByProjectSequence(sequence);
+    }
+
 }
