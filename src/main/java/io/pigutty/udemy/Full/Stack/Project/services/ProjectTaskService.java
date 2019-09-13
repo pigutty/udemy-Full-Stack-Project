@@ -43,7 +43,7 @@ public class ProjectTaskService {
             if (projectTask.getPriority()==0||projectTask.getPriority() == null) {
                 projectTask.setPriority(3);
             }
-            if (projectTask.getStatus() == null) {
+            if (projectTask.getStatus().equals("") ||projectTask.getStatus() == null) {
                 projectTask.setStatus("TO_DO");
             }
             return projectTaskRepository.save(projectTask);
@@ -87,13 +87,18 @@ public class ProjectTaskService {
         ProjectTask projectTask = findPTByProjectSequence(backlog_id,pt_id);
 
         projectTask = updatedTask;
-
+        if (projectTask.getPriority()==0||projectTask.getPriority() == null) {
+            projectTask.setPriority(3);
+        }
+        if (projectTask.getStatus().equals("") ||projectTask.getStatus() == null) {
+            projectTask.setStatus("TO_DO");
+        }
         return projectTaskRepository.save(projectTask);
     }
 
     public void deletePTByProjectSequence(String backlog_id, String pt_id){
         ProjectTask projectTask = findPTByProjectSequence(backlog_id, pt_id);
-        
+
         projectTaskRepository.delete(projectTask);
     }
 
