@@ -29,3 +29,7 @@ build/
 
 ### VS Code ###
 .vscode/
+
+src/main/java/io/pigutty/udemy/Full/Stack/Project/repositories/UserRepository.java
+
+src/main/java/io/pigutty/udemy/Full/Stack/Project/services/UserService.java
