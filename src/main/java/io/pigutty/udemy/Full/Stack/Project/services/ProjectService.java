@@ -4,11 +4,14 @@ import io.pigutty.udemy.Full.Stack.Project.domain.Backlog;
 import io.pigutty.udemy.Full.Stack.Project.domain.Project;
 import io.pigutty.udemy.Full.Stack.Project.domain.User;
 import io.pigutty.udemy.Full.Stack.Project.exceptions.ProjectIdException;
+import io.pigutty.udemy.Full.Stack.Project.exceptions.ProjectNotFoundException;
 import io.pigutty.udemy.Full.Stack.Project.repositories.BacklogRepository;
 import io.pigutty.udemy.Full.Stack.Project.repositories.ProjectRepository;
 import io.pigutty.udemy.Full.Stack.Project.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.security.Principal;
 
 @Service
 public class ProjectService {
@@ -51,26 +54,27 @@ public class ProjectService {
         }
     }
 
-    public Project findProjectByIdentifier(String projectId){
+    public Project findProjectByIdentifier(String projectId, String username){
 
         Project project = projectRepository.findByProjectIdentifier(projectId.toUpperCase());
 
         if (project == null){
             throw new ProjectIdException("Project ID '"+projectId+"' does not exist.");
         }
+
+        if(!project.getProjectLeader().equals(username)){
+            throw new ProjectNotFoundException(("Project not found in your account"));
+        }
+
         return project;
     }
 
-    public Iterable<Project> findAllProjects(){
-        return projectRepository.findAll();
+    public Iterable<Project> findAllProjects(String username){
+        return projectRepository.findAllByProjectLeader(username);
     }
 
-    public void deleteProjectByIdentifier(String projectId){
-        Project project = projectRepository.findByProjectIdentifier(projectId.toUpperCase());
-        if (project == null){
-            throw new ProjectIdException("Cannot Project with ID' "+projectId+" '. This project does not exist.");
-        }
+    public void deleteProjectByIdentifier(String projectId, String username){
 
-        projectRepository.delete(project);
+        projectRepository.delete(findProjectByIdentifier(projectId, username));
     }
 }
