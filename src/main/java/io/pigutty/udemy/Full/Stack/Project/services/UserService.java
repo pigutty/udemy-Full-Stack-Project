@@ -24,7 +24,7 @@ public class UserService {
             return userRepository.save(newUser);
         }
         catch(Exception e){
-            throw new UsernameAlreadyExistsException("Usernme '"+newUser.getUsername()+"' already exist");
+            throw new UsernameAlreadyExistsException("Username '"+newUser.getUsername()+"' already exist");
         }
     }
 }

@@ -2,9 +2,11 @@ package io.pigutty.udemy.Full.Stack.Project.services;
 
 import io.pigutty.udemy.Full.Stack.Project.domain.Backlog;
 import io.pigutty.udemy.Full.Stack.Project.domain.Project;
+import io.pigutty.udemy.Full.Stack.Project.domain.User;
 import io.pigutty.udemy.Full.Stack.Project.exceptions.ProjectIdException;
 import io.pigutty.udemy.Full.Stack.Project.repositories.BacklogRepository;
 import io.pigutty.udemy.Full.Stack.Project.repositories.ProjectRepository;
+import io.pigutty.udemy.Full.Stack.Project.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,8 +19,18 @@ public class ProjectService {
     @Autowired
     private BacklogRepository backlogRepository;
 
-    public Project saveOrUpdateProject(Project project){
+    @Autowired
+    private UserRepository userRepository;
+
+    public Project saveOrUpdateProject(Project project, String username){
         try{
+
+            User user = userRepository.findByUsername(username);
+
+            project.setUser(user);
+
+            project.setProjectLeader(user.getUsername());
+
             project.setProjectIdentifier(project.getProjectIdentifier().toUpperCase());
 
             if(project.getId()==null){
