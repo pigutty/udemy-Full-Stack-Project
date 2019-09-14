@@ -95,7 +95,6 @@ public class Project {
     public Date getCreate_At() {
         return create_At;
     }
-
     public void setCreate_At(Date create_At) {
         this.create_At = create_At;
     }
