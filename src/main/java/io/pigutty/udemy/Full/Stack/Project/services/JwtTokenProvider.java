@@ -4,7 +4,6 @@ import io.jsonwebtoken.*;
 import io.pigutty.udemy.Full.Stack.Project.domain.User;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
-import sun.reflect.annotation.ExceptionProxy;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -44,7 +43,7 @@ public class JwtTokenProvider {
         }catch (SignatureException ex){
             System.out.println("Invalid JWT Signature");
         }catch (MalformedJwtException ex){
-            System.out.println("Incalid JWT Token");
+            System.out.println("Invalid JWT Token");
         }catch (ExpiredJwtException ex){
             System.out.println("Expired JWT token");
         }catch (UnsupportedJwtException ex){
