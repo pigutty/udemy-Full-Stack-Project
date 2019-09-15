@@ -59,7 +59,6 @@ class Register extends Component {
                     placeholder="Name"
                     name="fullname"
                     value={this.state.fullname}
-                    required
                     onChange={this.onChange}
                   />
                   {errors.fullname && (
@@ -68,7 +67,7 @@ class Register extends Component {
                 </div>
                 <div className="form-group">
                   <input
-                    type="email"
+                    type="text"
                     className={classnames("form-control form-control-lg", {
                       "is-invalid": errors.username
                     })}
@@ -124,7 +123,7 @@ class Register extends Component {
 }
 
 Register.propTypes = {
-  createUser: PropTypes.func.isRequired,
+  createNewUser: PropTypes.func.isRequired,
   errors: PropTypes.object.isRequired
 };
 
