@@ -3,7 +3,7 @@ import { Redirect, Route } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
-const SecureRoute = ({ conmponent: Component, security, ...otherProps }) => (
+const SecureRoute = ({ component: Component, security, ...otherProps }) => (
   <Route
     {...otherProps}
     render={props =>

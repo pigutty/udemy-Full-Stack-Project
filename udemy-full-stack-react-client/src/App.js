@@ -17,7 +17,7 @@ import jwt_decode from "jwt-decode";
 import setJWTToken from "./securityUtils/setJWTToken";
 import { SET_CURRENT_USER } from "./actions/types";
 import { logout } from "./actions/securityActions";
-import SecuredRoute from "./securityUtils/SecureRoute";
+import SecureRoute from "./securityUtils/SecureRoute";
 
 const jwtToken = localStorage.jwtToken;
 
@@ -48,24 +48,24 @@ class App extends Component {
             <Route exact path="/login" component={Login} />
 
             <Switch>
-              <SecuredRoute exact path="/dashBoard" component={Dashboard} />
-              <SecuredRoute exact path="/addProject" component={AddProject} />
-              <SecuredRoute
+              <SecureRoute exact path="/dashBoard" component={Dashboard} />
+              <SecureRoute exact path="/addProject" component={AddProject} />
+              <SecureRoute
                 exact
                 path="/updateProject/:id"
                 component={UpdateProject}
               />
-              <SecuredRoute
+              <SecureRoute
                 exact
                 path="/projectBoard/:id"
                 component={ProjectBoard}
               />
-              <SecuredRoute
+              <SecureRoute
                 exact
                 path="/addProjectTask/:id"
                 component={AddProjectTask}
               />
-              <SecuredRoute
+              <SecureRoute
                 exact
                 path="/updateProjectTask/:backlog_id/:pt_id"
                 component={UpdateProjectTask}
