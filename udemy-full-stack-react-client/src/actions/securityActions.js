@@ -21,7 +21,7 @@ export const createNewUser = (newUser, history) => async dispatch => {
 
 export const login = LoginRequest => async dispatch => {
   try {
-    const res = await axios.post("/api/users/login");
+    const res = await axios.post("/api/users/login", LoginRequest);
     const { token } = res.data;
     localStorage.setItem("jwtToken", token);
     setJWTToken(token);
