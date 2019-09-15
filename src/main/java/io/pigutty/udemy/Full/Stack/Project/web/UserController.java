@@ -25,6 +25,7 @@ import static io.pigutty.udemy.Full.Stack.Project.security.SecurityConstants.TOK
 
 @RestController
 @RequestMapping("/api/users")
+@CrossOrigin
 public class UserController {
 
     @Autowired
